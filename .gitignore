@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+
+# MacOS Resource Forks
+._*
+.DS_Store
