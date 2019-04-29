@@ -2,7 +2,7 @@
 #include <iostream>
 #include <iomanip>
 
-Account::Account(int initial_deposit)
+Account::Account( int initial_deposit )
 {
 	_displayTimestamp();
 	this->_accountIndex = _nbAccounts;
@@ -16,9 +16,9 @@ Account::Account(int initial_deposit)
 	++_nbAccounts;
 }
 
-Account::Account(void) { /* ? */ }
+Account::Account( void ) { /* private unused? constructor */ }
 
-Account::~Account(void)
+Account::~Account( void )
 {
 	_displayTimestamp();
 	std::cout << "index:" << _accountIndex
@@ -27,15 +27,15 @@ Account::~Account(void)
 	_nbAccounts--;
 }
 
-int Account::getNbAccounts(void) { return _nbAccounts; }
+int Account::getNbAccounts( void ) { return _nbAccounts; }
 
-int Account::getTotalAmount(void) { return _totalAmount; }
+int Account::getTotalAmount( void ) { return _totalAmount; }
 
-int Account::getNbDeposits(void) { return _totalNbDeposits; }
+int Account::getNbDeposits( void ) { return _totalNbDeposits; }
 
-int Account::getNbWithdrawals(void) { return _totalNbWithdrawals; }
+int Account::getNbWithdrawals( void ) { return _totalNbWithdrawals; }
 
-void Account::displayAccountsInfos(void)
+void Account::displayAccountsInfos( void )
 {
 	_displayTimestamp();
 	std::cout << "accounts:" << _nbAccounts
@@ -45,7 +45,7 @@ void Account::displayAccountsInfos(void)
 			  << std::endl;
 }
 
-void Account::makeDeposit(int deposit)
+void Account::makeDeposit( int deposit )
 {
 	_displayTimestamp();
 	this->_nbDeposits++;
@@ -60,7 +60,7 @@ void Account::makeDeposit(int deposit)
 	this->_totalAmount += deposit;
 }
 
-bool Account::makeWithdrawal(int withdrawal)
+bool Account::makeWithdrawal( int withdrawal )
 {
 	bool ret;
 	_displayTimestamp();
@@ -86,13 +86,13 @@ bool Account::makeWithdrawal(int withdrawal)
 	return ret;
 }
 
-int Account::checkAmount(void) const
+int Account::checkAmount( void ) const
 {
 	std::cout << "checkAmount" << std::endl;
 	return _amount;
 }
 
-void Account::displayStatus(void) const
+void Account::displayStatus( void ) const
 {
 	_displayTimestamp();
 	std::cout << "index:" << this->_accountIndex
@@ -102,7 +102,7 @@ void Account::displayStatus(void) const
 			  << std::endl;
 }
 
-void Account::_displayTimestamp(void)
+void Account::_displayTimestamp( void )
 {
 	time_t now = time(0);
 	tm *ltm = localtime(&now);

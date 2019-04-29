@@ -6,7 +6,7 @@
 #    By: callen <callen@student.42.us.org>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/26 12:34:05 by callen            #+#    #+#              #
-#    Updated: 2019/04/26 12:48:09 by callen           ###   ########.fr        #
+#    Updated: 2019/04/28 18:36:26 by callen           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,9 +24,6 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CXX) $(OBJS) -o $@
-
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) -o $@ -c $<
 
 clean:
 	rm -f $(OBJS)

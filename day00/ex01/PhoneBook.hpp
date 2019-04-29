@@ -10,28 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _PHONEBOOK_HPP
-#define _PHONEBOOK_HPP
+#ifndef PHONEBOOK_HPP
+#define PHONEBOOK_HPP
 
 #include <iostream>
 #include <iomanip>
 #include <string>
-// #ifndef PHONEBOOKTEST_HPP
-// # define PHONEBOOKTEST_HPP
-
-// class PhoneBookTest {
-
-// public:
-// 	PhoneBookTest( void );
-// 	PhoneBookTest( PhoneBookTest const & );
-// 	~PhoneBookTest( void );
-// 	PhoneBookTest& operator=( PhoneBookTest const& );
-
-// private:
-
-// };
-
-// #endif
 
 class Phonebook {
 
@@ -66,4 +50,4 @@ public:
 	void	parse_input( const std::string& input );
 };
 
-#endif /* _PHONEBOOK_HPP */
+#endif /* PHONEBOOK_HPP */
