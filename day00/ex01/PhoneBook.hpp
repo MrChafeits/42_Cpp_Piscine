@@ -6,7 +6,7 @@
 /*   By: callen <callen@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 13:15:22 by callen            #+#    #+#             */
-//   Updated: 2019/04/26 23:57:41 by marvin           ###   ########.fr       //
+/*   Updated: 2019/04/29 11:52:18 by callen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,10 @@ private:
 	Contact _contacts[8];
 	int		_idx;
 
-	void	_plonk( ) const;
-	void	_add_cnt( );
-	void	_find_cnt( ) const;
+	void	_plonk( void ) const;
+	void	_add_cnt( void );
+	void	_find_cnt( void ) const;
 	void	_print_cnt( Contact ct ) const;
-	void	_dump_all_cnt( ) const;
 
 public:
 	Phonebook( void );

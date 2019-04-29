@@ -6,7 +6,7 @@
 #    By: callen <callen@student.42.us.org>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/26 12:34:05 by callen            #+#    #+#              #
-#    Updated: 2019/04/27 19:07:51 by marvin           ###   ########.fr        #
+#    Updated: 2019/04/29 11:48:56 by callen           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ INCFLAGS := -Iresources
 all: $(NAME)
 
 $(NAME): $(OBJS)
+	$(CXX) $(OBJS) -o $@
 
 clean:
 	rm -f $(OBJS)
@@ -38,5 +39,5 @@ re: fclean all
 test: all
 	./$(NAME) | awk -F' ' '{print $$2}' > /tmp/out.txt
 	cat resources/19920104_091532.log | awk -F' ' '{print $$2}' > /tmp/in.txt
-	diff /tmp/out.txt /tmp/in.txt || true
+	diff /tmp/out.txt /tmp/in.txt
 	rm -f /tmp/out.txt /tmp/in.txt

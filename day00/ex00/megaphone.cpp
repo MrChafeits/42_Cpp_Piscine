@@ -6,18 +6,18 @@
 /*   By: callen <callen@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 12:35:33 by callen            #+#    #+#             */
-/*   Updated: 2019/04/28 18:36:04 by callen           ###   ########.fr       */
+/*   Updated: 2019/04/29 11:40:11 by callen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 
-void project_thy_voice(int ac, char **av)
+void project_thy_voice( int ac, char **av )
 {
 	for (int i = 0; i < ac; i++) {
 		for (int j = 0; av[i][j]; j++) {
 			if (av[i][j] >= 'a' && av[i][j] <= 'z') {
-				std::cout << (char)std::toupper(av[i][j]);
+				std::cout << static_cast<char>(std::toupper(av[i][j]));
 			} else {
 				std::cout << av[i][j];
 			}
@@ -26,7 +26,7 @@ void project_thy_voice(int ac, char **av)
 	std::cout << std::endl;
 }
 
-int main(int argc, char **argv)
+int main( int argc, char **argv )
 {
 	if (argc > 1) {
 		project_thy_voice(argc - 1, argv + 1);

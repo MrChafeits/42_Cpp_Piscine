@@ -6,7 +6,7 @@
 /*   By: callen <callen@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 13:12:33 by callen            #+#    #+#             */
-//   Updated: 2019/04/27 00:47:36 by marvin           ###   ########.fr       //
+/*   Updated: 2019/04/29 11:42:16 by callen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	Phonebook::_add_cnt( void )
 }
 
 void	Phonebook::_print_cnt( Contact ct ) const
-{	
+{
 	std::cout << "[ First Name      ]: " << ct.firstName << std::endl;
 	std::cout << "[ Last Name       ]: " << ct.lastName << std::endl;
 	std::cout << "[ Nickname        ]: " << ct.nickName << std::endl;
