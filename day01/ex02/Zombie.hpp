@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: callen <callen@student.42.us.org>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/04/29 17:09:48 by callen            #+#    #+#             */
+/*   Updated: 2019/04/29 17:09:56 by callen           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef ZOMBIE_HPP
 #define ZOMBIE_HPP
 
@@ -15,8 +27,8 @@ public:
 
 	void announce( void ) const;
 
-	void setName( std::string );
-	void setType( std::string );
+	void setName( std::string s );
+	void setType( std::string s );
 
 	std::string getName( void ) const;
 	std::string getType( void ) const;
@@ -27,4 +39,4 @@ private:
 
 };
 
-#endif
+#endif /* ZOMBIE_HPP */

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: callen <callen@student.42.us.org>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/04/29 17:09:36 by callen            #+#    #+#             */
+/*   Updated: 2019/04/29 17:09:37 by callen           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Zombie.hpp"
 
 std::random_device rd;
@@ -15,6 +27,9 @@ std::string _ztypes[10] = {
 	"Tank"
 };
 
+std::string _aup = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+std::string _alp = "abcdefghijklmnopqrstuvwxyz";
+
 Zombie::Zombie( std::string n, std::string t )
 {
 	this->_name = n;
@@ -30,12 +45,12 @@ Zombie::Zombie( std::string n )
 Zombie::Zombie( void )
 {
 	this->_type = _ztypes[rd() % 10];
-	for (unsigned int len = 1+rd()%15; len; len--)
-		this->_name.push_back((char)((rd() % 94) + 32));
+	this->_name.push_back(static_cast<char>(std::toupper(_alp[rd()%26])));
+	for (unsigned int len = 4+rd()%8; len; len--)
+		this->_name.push_back(_alp[rd()%26]);
 }
 
 Zombie::~Zombie( void ) { }
-
 void Zombie::setName( std::string s ) { this->_name = s; }
 void Zombie::setType( std::string s ) { this->_type = s; }
 

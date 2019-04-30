@@ -6,15 +6,15 @@
 #    By: callen <callen@student.42.us.org>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/26 12:34:05 by callen            #+#    #+#              #
-#    Updated: 2019/04/29 14:21:18 by callen           ###   ########.fr        #
+#    Updated: 2019/04/29 16:56:53 by callen           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME := horseProgram.out
+NAME := horde.out
 DNAME := d_$(NAME)
 ANAME := a_$(NAME)
 
-SRCS := Pony.cpp main.cpp
+SRCS := Zombie.cpp ZombieHorde.cpp main.cpp
 OBJS := $(SRCS:.cpp=.o)
 
 CXX	:= clang++
@@ -29,9 +29,6 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CXX) $(OBJS) -o $@
-
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) $(INCFLAGS)  -o $@ -c $<
 
 debug:
 	$(CXX) $(DBGFLAGS) $(INCFLAGS) -o $(DNAME) $(SRCS)

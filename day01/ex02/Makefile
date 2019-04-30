@@ -6,11 +6,11 @@
 #    By: callen <callen@student.42.us.org>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/26 12:34:05 by callen            #+#    #+#              #
-#    Updated: 2019/04/28 01:54:18 by callen           ###   ########.fr        #
+#    Updated: 2019/04/29 17:09:25 by callen           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME := zombo
+NAME := zombie.out
 DNAME := d_$(NAME)
 ANAME := a_$(NAME)
 
@@ -18,8 +18,8 @@ SRCS := Zombie.cpp ZombieEvent.cpp main.cpp
 OBJS := $(SRCS:.cpp=.o)
 
 CXX	:= clang++
-CXXFLAGS := -std=c++98 -Wall -Wextra -Werror
-DBGFLAGS := -std=c++98 -Wall -Wextra -g
+CXXFLAGS := -std=c++98 -Wall -Wextra -Werror -pipe
+DBGFLAGS := -std=c++98 -Wall -Wextra -g -pipe
 ASNFLAGS := $(DBGFLAGS) -fsanitize=address
 INCFLAGS := -I.
 

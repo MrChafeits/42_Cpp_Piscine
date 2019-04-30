@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ZombieEvent.hpp                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: callen <callen@student.42.us.org>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/04/29 17:10:25 by callen            #+#    #+#             */
+/*   Updated: 2019/04/29 17:10:46 by callen           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef ZOMBIEEVENT_HPP
 #define ZOMBIEEVENT_HPP
 
-#include "Zombie.hpp"
 #include <iostream>
 #include <string>
+#include "Zombie.hpp"
 
 class ZombieEvent {
 
@@ -24,4 +36,4 @@ private:
 
 void a();
 
-#endif
+#endif /* ZOMBIEEVENT_HPP */

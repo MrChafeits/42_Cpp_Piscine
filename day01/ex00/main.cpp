@@ -1,7 +1,19 @@
-#include "Pony.hpp"
-#include <iostream>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: callen <callen@student.42.us.org>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/04/29 17:05:20 by callen            #+#    #+#             */
+/*   Updated: 2019/04/29 17:07:31 by callen           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void ponyOnTheHeap(void)
+#include <iostream>
+#include "Pony.hpp"
+
+void ponyOnTheHeap( void )
 {
 	Pony *horace = new Pony();
 	std::cout << "horace = " << horace << std::endl;
@@ -16,7 +28,7 @@ void ponyOnTheHeap(void)
 	delete horace;
 }
 
-void ponyOnTheStack(void)
+void ponyOnTheStack( void )
 {
 	Pony harold;
 	std::cout << "&harold = " << &harold << std::endl;
@@ -30,11 +42,12 @@ void ponyOnTheStack(void)
 	std::cout << "Name: " << harold.getName() << std::endl;
 }
 
-int main(void)
+int main(int ac, char **av)
 {
 	std::cout << "--- ponyOnTheHeap ---" << std::endl;
 	ponyOnTheHeap();
 	std::cout << std::endl << "--- ponyOnTheStack ---" << std::endl;
 	ponyOnTheStack();
-	// while(1);
+	if (ac > 1 && !std::strncmp(av[1], "leak", 5)) while(1);
+	return 0;
 }
