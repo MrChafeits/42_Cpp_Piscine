@@ -7,21 +7,18 @@
 class HumanB {
 
 public:
-	HumanB( void );
 	HumanB( std::string, Weapon& );
-	HumanB( HumanB const & );
 	~HumanB( void );
-	HumanB& operator=( HumanB const& );
 
 	void attack( void ) const;
 	void setWeapon( Weapon& );
-	const Weapon& getWeapon( void ) const;
+	Weapon &getWeapon( void ) const;
 	void setName( std::string );
 	const std::string getName( void ) const;
 	
 private:
 	std::string _name;
-	Weapon _hurty_hook;
+	Weapon &_hurty_hook;
 
 };
 

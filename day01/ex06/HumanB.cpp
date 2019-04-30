@@ -1,23 +1,15 @@
 #include <iostream>
 #include "HumanB.hpp"
 
-HumanB::HumanB( void )
+HumanB::HumanB( std::string n, Weapon &w ): _name(n), _hurty_hook(w)
 {
-	this->_name = "Jane SpaceMarine";
-	this->_hurty_hook = Weapon("schuut");
 }
-
-HumanB::HumanB( std::string n, Weapon &w ): _name(n), _hurty_hook(w) { };
-
-HumanB::HumanB( HumanB const &cp ) { *this = cp; }
 
 HumanB::~HumanB( void ) { }
 
-HumanB& HumanB::operator=( HumanB const& ) { return *this; }	// TODO: implement
+void HumanB::setWeapon( Weapon &w ) { this->_hurty_hook = w; }
 
-void HumanB::setWeapon( Weapon& w ) { this->_hurty_hook = w; }
-
-const Weapon& HumanB::getWeapon( void ) const { return this->_hurty_hook; }
+Weapon &HumanB::getWeapon( void ) const { return this->_hurty_hook; }
 
 void HumanB::setName( std::string s ) { this->_name = s; }
 

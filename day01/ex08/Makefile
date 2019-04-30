@@ -6,11 +6,11 @@
 #    By: callen <callen@student.42.us.org>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/26 12:34:05 by callen            #+#    #+#              #
-#    Updated: 2019/04/29 23:01:23 by marvin           ###   ########.fr        #
+#    Updated: 2019/04/30 00:38:24 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME := replace
+NAME := fuck.out
 DNAME := d_$(NAME)
 ANAME := a_$(NAME)
 
