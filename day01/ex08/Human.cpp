@@ -1,38 +1,38 @@
 #include <iostream>
+#include <string>
 #include "Human.hpp"
-
-Human::Human( void )
-{
-	this->fun[3] = {{ &Human::meleeAttack, "melee" },
-					{ &Human::rangedAttack, "ranged" },
-					{ &Human::intimidatingShout, "intimidate" }};
-}
-
-Human::~Human( void ) { }
 
 void Human::meleeAttack( std::string const &target )
 {
-	std::cout << "Human whacks " << target << " with a SSBM disc case" << std::endl;
+	std::cout << "Human whacks ["
+			  << target
+			  << "] with a SSBM disc case "
+			  << "in a ludicrous display of (melee) prowess"
+			  << std::endl;
 }
-void Human::stma( std::string const &t ) { this->meleeAttack(t); }
-void Human::stmr( std::string const &t ) { this->rangedAttack(t); }
-void Human::stmi( std::string const &t ) { this->intimidatingShout(t); }
+
 void Human::rangedAttack( std::string const &target )
 {
-	std::cout << "Human hucks a SSBM disc at " << target << std::endl;
+	std::cout << "Human hucks a SSBM disc from a (range) at ["
+			  << target << "]"
+			  << std::endl;
 }
 
 void Human::intimidatingShout( std::string const &target )
 {
-	std::cout << " intimidating shout " << target << std::endl;
+	std::cout << "Human performs an (intimidating shout) "
+			  << "in the general direction of ["
+			  << target << "]"
+			  << std::endl;
 }
 
-void Human::action( std::string const &an, std::string const &t )
+void Human::action( std::string const & action_name, std::string const & target )
 {
-	void (Human::*act[3])( std::string const& ) = {&Human::stma,
-												   &Human::stmr,
-												   &Human::stmi};
+	std::string whomst[3] = {"melee", "ranged", "intimidate"};
+	void (Human::*act[3])( const std::string& ) = {&Human::meleeAttack,
+												   &Human::rangedAttack,
+												   &Human::intimidatingShout};
 	for (int i = 0; i < 3; i++)
-		if (an == fun[i].n)
-			*act[i](t);
+		if (action_name == whomst[i])
+			(this->*act[i])(target);
 }

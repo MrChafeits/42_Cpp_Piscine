@@ -6,15 +6,15 @@
 #    By: callen <callen@student.42.us.org>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/26 12:34:05 by callen            #+#    #+#              #
-#    Updated: 2019/04/30 12:49:12 by callen           ###   ########.fr        #
+#    Updated: 2019/04/30 13:34:49 by callen           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME := fuck.out
+NAME := logger.out
 DNAME := d_$(NAME)
 ANAME := a_$(NAME)
 
-SRCS := main.cpp Human.cpp
+SRCS := main.cpp Logger.cpp
 OBJS := $(SRCS:.cpp=.o)
 
 CXX	:= clang++
