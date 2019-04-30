@@ -6,7 +6,7 @@
 #    By: callen <callen@student.42.us.org>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/26 12:34:05 by callen            #+#    #+#              #
-#    Updated: 2019/04/28 02:11:45 by callen           ###   ########.fr        #
+#    Updated: 2019/04/30 14:05:03 by callen           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,9 +29,6 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CXX) $(OBJS) -o $@
-
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) $(INCFLAGS) -o $@ -c $<
 
 debug:
 	$(CXX) $(DBGFLAGS) $(INCFLAGS) -o $(DNAME) $(SRCS)
