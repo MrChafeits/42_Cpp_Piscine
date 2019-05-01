@@ -12,8 +12,6 @@
 
 #include "Zombie.hpp"
 
-std::random_device rd;
-
 std::string _ztypes[10] = {
 	"Walker",
 	"Shambler",
@@ -39,15 +37,15 @@ Zombie::Zombie( std::string n, std::string t )
 Zombie::Zombie( std::string n )
 {
 	this->_name = n;
-	this->_type = _ztypes[rd() % 10];
+	this->_type = _ztypes[rand() % 10];
 }
 
 Zombie::Zombie( void )
 {
-	this->_type = _ztypes[rd() % 10];
-	this->_name.push_back(static_cast<char>(std::toupper(_alp[rd()%26])));
-	for (unsigned int len = 4+rd()%8; len; len--)
-		this->_name.push_back(_alp[rd()%26]);
+	this->_type = _ztypes[rand() % 10];
+	this->_name.push_back(static_cast<char>(std::toupper(_alp[rand()%26])));
+	for (unsigned int len = 4+rand()%8; len; len--)
+		this->_name.push_back(_alp[rand()%26]);
 }
 
 Zombie::~Zombie( void ) { }
