@@ -1,5 +1,6 @@
 #include "FragTrap.hpp"
 #include "ScavTrap.hpp"
+#include "NinjaTrap.hpp"
 
 static const std::string targets[8] = {
 	"Bad Boat",
@@ -82,9 +83,41 @@ void testS( void )
 	}
 }
 
+void testN( void )
+{
+	std::string n1("Polipio");
+	ClapTrap bep;
+	FragTrap bop;
+	ScavTrap bup;
+	NinjaTrap bap;
+	NinjaTrap doot(n1);
+	doot.rangedAttack(targets[rand()%8]);
+	doot.meleeAttack(targets[rand()%8]);
+	doot.takeDamage(75);
+	doot.rangedAttack(targets[rand()%8]);
+	doot.meleeAttack(targets[rand()%8]);
+	doot.beRepaired(75);
+	doot.rangedAttack(targets[rand()%8]);
+	doot.meleeAttack(targets[rand()%8]);
+	doot.takeDamage(175);
+	doot.rangedAttack(targets[rand()%8]);
+	doot.meleeAttack(targets[rand()%8]);
+	doot.beRepaired(175);
+	doot.rangedAttack(targets[rand()%8]);
+	doot.meleeAttack(targets[rand()%8]);
+	doot.setHp(doot.getHpMax());
+	doot.setEp(doot.getEpMax());
+	doot.ninjaShoebox(bep);
+	doot.ninjaShoebox(bop);
+	doot.ninjaShoebox(bup);
+	doot.ninjaShoebox(bap);
+	doot.ninjaShoebox(bep);
+}
+
 int main( void )
 {
 	srand(time(0));
 	testF();
 	testS();
+	testN();
 }

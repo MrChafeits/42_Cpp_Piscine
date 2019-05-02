@@ -6,15 +6,15 @@
 #    By: callen <callen@student.42.us.org>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/26 12:34:05 by callen            #+#    #+#              #
-#    Updated: 2019/05/01 18:39:34 by callen           ###   ########.fr        #
+#    Updated: 2019/05/01 21:15:42 by callen           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME := howDoIRotateTextInMSPaint.out
+NAME := spinningBobingos.out
 DNAME := d_$(NAME)
 ANAME := a_$(NAME)
 
-SRCS := ClapTrap.cpp FragTrap.cpp ScavTrap.cpp main.cpp
+SRCS := ClapTrap.cpp FragTrap.cpp NinjaTrap.cpp ScavTrap.cpp main.cpp
 OBJS := $(SRCS:.cpp=.o)
 
 CXX	:= clang++
