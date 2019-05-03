@@ -6,16 +6,16 @@
 #    By: callen <callen@student.42.us.org>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/26 12:34:05 by callen            #+#    #+#              #
-#    Updated: 2019/05/02 21:48:18 by callen           ###   ########.fr        #
+#    Updated: 2019/05/01 21:20:35 by callen           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME := wallIsSTOP.out
+NAME := babaIsYOU.out
 DNAME := d_$(NAME)
 ANAME := a_$(NAME)
 
-SRCS := AWeapon.cpp PlasmaRifle.cpp PowerFist.cpp Enemy.cpp SuperMutant.cpp \
-		RadScorpion.cpp Character.cpp main.cpp
+SRCS := ClapTrap.cpp FragTrap.cpp NinjaTrap.cpp \
+		ScavTrap.cpp SuperTrap.cpp main.cpp
 OBJS := $(SRCS:.cpp=.o)
 
 CXX	:= clang++
