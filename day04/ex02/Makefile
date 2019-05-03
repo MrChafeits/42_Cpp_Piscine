@@ -6,11 +6,11 @@
 #    By: callen <callen@student.42.us.org>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/26 12:34:05 by callen            #+#    #+#              #
-#    Updated: 2019/05/02 22:24:28 by callen           ###   ########.fr        #
+#    Updated: 2019/05/03 14:48:58 by callen           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME := babaIsYOU.out
+NAME := kekeIsMOVE.out
 DNAME := d_$(NAME)
 ANAME := a_$(NAME)
 
