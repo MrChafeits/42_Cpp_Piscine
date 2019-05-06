@@ -6,15 +6,15 @@
 #    By: callen <callen@student.42.us.org>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/26 12:34:05 by callen            #+#    #+#              #
-#    Updated: 2019/05/03 16:10:18 by callen           ###   ########.fr        #
+#    Updated: 2019/05/06 14:51:57 by callen           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME := waterIsSINK.out
+NAME := itHasBeenYears.out
 DNAME := d_$(NAME)
 ANAME := a_$(NAME)
 
-SRCS := AMateria.cpp Character.cpp Cure.cpp Ice.cpp MateriaSource.cpp main.cpp
+SRCS := Form.cpp Bureaucrat.cpp main.cpp
 OBJS := $(SRCS:.cpp=.o)
 
 CXX	:= clang++

@@ -52,5 +52,7 @@ std::ostream& operator<<( std::ostream& os, Character const& ob )
 }
 
 std::string const& Character::getName( void ) const { return _name; }
+
 int Character::getAp( void ) const { return _ap; }
+
 AWeapon const* Character::getWep( void ) const { return _wep; }

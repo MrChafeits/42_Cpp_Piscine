@@ -8,9 +8,9 @@
 
 int main( void )
 {
-	Character *jahn = new Character("Schuut");
+	Character *jahn = new Character("Schuut Man");
 	std::cout << *jahn;
-	Enemy* b = new RadScorpion();
+	Enemy* b = new RadScorpion(), *c = new SuperMutant();
 	AWeapon *pr=new PlasmaRifle(), *pf=new PowerFist();
 	jahn->equip(pr);
 	std::cout << *jahn;
@@ -23,9 +23,12 @@ int main( void )
 	jahn->recoverAP();
 	jahn->equip(pf);
 	std::cout << *jahn;
-	jahn->attack(b);
-	jahn->attack(b);
-	jahn->attack(b);
+	jahn->attack(c);
+	jahn->attack(c);
+	jahn->attack(c);
+	jahn->attack(c);
+	jahn->attack(c);
+	jahn->attack(c);
 	jahn->recoverAP();
 	std::cout << *jahn;
 }

@@ -16,10 +16,10 @@ RadScorpion& RadScorpion::operator=( RadScorpion const& ) { return *this; }
 void RadScorpion::takeDamage( int n )
 {
 	if (!_hp) {
-		std::cout << "Enemy " << _type << " is a pile of meaty bones." << std::endl;
+		std::cout << "Enemy " << _type << " is a smear of irradiated goop." << std::endl;
 	} else {
 		std::cout << "Enemy " << _type << " takes " << (n-3<0?0:n-3) << " damage." << std::endl;
-		_hp -= (n-3<0?0:n-3);
+		_hp -= n;
 		if (_hp<=0) {
 			_hp=0;
 			std::cout << "* SPROTCH *" << std::endl;
