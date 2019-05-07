@@ -38,6 +38,7 @@ public:
 	int getGradeReqExec( void ) const;
 	bool getFormState( void ) const;
 	bool beSigned( Bureaucrat const& ) throw(Form::GradeTooLowException);
+	void action( Bureaucrat const& ) const throw(Form::GradeTooLowException);
 
 private:
 	std::string const _name;

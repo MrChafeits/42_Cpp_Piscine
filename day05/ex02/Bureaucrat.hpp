@@ -42,6 +42,7 @@ public:
 	void incGrade( void ) throw(Bureaucrat::GradeTooHighException, Bureaucrat::GradeTooLowException);
 	void decGrade( void ) throw(Bureaucrat::GradeTooHighException, Bureaucrat::GradeTooLowException);
 	void signForm( Form &f ) throw(Bureaucrat::GradeTooLowException);
+	void executeForm( Form const& ) const throw(Bureaucrat::GradeTooLowException);
 
 private:
 	int _grade;

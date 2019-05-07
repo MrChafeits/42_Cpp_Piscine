@@ -1,5 +1,7 @@
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int main()
 {
@@ -62,7 +64,25 @@ int main()
 	jim.signForm(f);
 	std::cout << f << std::endl;
 
-	Bureaucrat tom = Bureaucrat("tom", 10);
+	Bureaucrat tom = Bureaucrat("tom", 1);
 	tom.signForm(f);
 	std::cout << f << std::endl;
+
+	std::cout << "Shrub" << std::endl;
+	ShrubberyCreationForm scf = std::string("output");
+
+	tom.signForm(scf);
+	tom.executeForm(scf);
+	std::cout << tom << std::endl << f << std::endl;
+
+	RobotomyRequestForm rrf = RobotomyRequestForm("Vimothy");
+	tom.signForm(rrf);
+	std::cout << rrf << std::endl;
+	tom.executeForm(rrf);
+	std::cout << rrf << std::endl;
+
+	PresidentialPardonForm ppf = PresidentialPardonForm("Zaphod Beeblebrox");
+//	tom.signForm(ppf);
+	tom.executeForm(ppf);
+	std::cout << ppf << std::endl;
 }

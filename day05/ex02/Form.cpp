@@ -39,6 +39,13 @@ bool Form::beSigned( Bureaucrat const& b ) throw(Form::GradeTooLowException) {
 	return true;
 }
 
+void Form::action( Bureaucrat const& e ) const throw(Form::GradeTooLowException) {
+	if (e.getGrade() > _gradeReqExec)
+		throw Form::GradeTooLowException();
+	else
+		std::cout << "Executing " << _name << std::endl;
+}
+
 std::ostream& operator<<( std::ostream& os, Form const& fm ) {
 	os << fm.getName()
 	   << " is"
