@@ -6,16 +6,18 @@
 #    By: callen <callen@student.42.us.org>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/26 12:34:05 by callen            #+#    #+#              #
-#    Updated: 2019/05/01 21:20:35 by callen           ###   ########.fr        #
+#    Updated: 2019/05/07 12:32:19 by callen           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME := babaIsYOU.out
+NAME := featuringDanteFromTheDevilMayCrySeries.out
 DNAME := d_$(NAME)
 ANAME := a_$(NAME)
 
-SRCS := ClapTrap.cpp FragTrap.cpp NinjaTrap.cpp \
-		ScavTrap.cpp SuperTrap.cpp main.cpp
+SRCS := Form.cpp Intern.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp \
+		PresidentialPardonForm.cpp Bureaucrat.cpp OfficeBlock.cpp main.cpp \
+		MutantPigTerminationForm.cpp
+
 OBJS := $(SRCS:.cpp=.o)
 
 CXX	:= clang++
