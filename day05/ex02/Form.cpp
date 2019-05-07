@@ -1,22 +1,18 @@
 #include "Form.hpp"
 
-Form::Form( void ):
-	_name("Todo"),
-	_gradeReqSign(150),
-	_gradeReqExec(149),
-	_signed(false) { }
-
-Form::Form( std::string n, int s, int e )
+Form::Form( std::string n, std::string t, int s, int e )
 	throw(Form::GradeTooHighException, Form::GradeTooLowException):
 	_name(n),
-	_gradeReqSign(s),
-	_gradeReqExec(e),
+	_target(t),
+	_gradeSign(s),
+	_gradeExec(e),
 	_signed(false) { }
 
 Form::Form( Form const &cp ):
 	_name(cp._name),
-	_gradeReqSign(cp._gradeReqSign),
-	_gradeReqExec(cp._gradeReqExec),
+	_target(cp._target),
+	_gradeSign(cp._gradeSign),
+	_gradeExec(cp._gradeExec),
 	_signed(cp._signed) { *this = cp; }
 
 Form::~Form( void ) { }
@@ -28,33 +24,36 @@ Form& Form::operator=( Form const& rhs) {
 	return *this;
 }
 
-std::string const& Form::getName( void ) const { return _name; }
-int Form::getGradeReqSign( void ) const { return _gradeReqSign; }
-int Form::getGradeReqExec( void ) const { return _gradeReqExec; }
-bool Form::getFormState( void ) const { return _signed; }
+std::string Form::getName( void ) const { return _name; }
+std::string Form::getTarget( void ) const { return _target; }
+int Form::getSignGrade( void ) const { return _gradeSign; }
+int Form::getExecGrade( void ) const { return _gradeExec; }
+bool Form::getSigned( void ) const { return _signed; }
 
 bool Form::beSigned( Bureaucrat const& b ) throw(Form::GradeTooLowException) {
-	if (b.getGrade() > _gradeReqSign) throw Form::GradeTooLowException();
+	if (b.getGrade() > _gradeSign) throw Form::GradeTooLowException();
 	_signed = true;
 	return true;
 }
 
-void Form::action( Bureaucrat const& e ) const throw(Form::GradeTooLowException) {
-	if (e.getGrade() > _gradeReqExec)
+void Form::execute( Bureaucrat const& e ) const {
+	if (e.getGrade() > _gradeExec)
 		throw Form::GradeTooLowException();
-	else
+	else if (_signed)
 		std::cout << "Executing " << _name << std::endl;
+	else
+		std::cout << "Form " << _name << " not signed" << std::endl;
 }
 
 std::ostream& operator<<( std::ostream& os, Form const& fm ) {
 	os << fm.getName()
 	   << " is"
-	   << (fm.getFormState() ? " " : " not ")
+	   << (fm.getSigned() ? " " : " not ")
 	   << "signed"
 	   << ", needs grade "
-	   << fm.getGradeReqSign()
+	   << fm.getSignGrade()
 	   << " to sign, and "
-	   << fm.getGradeReqExec()
+	   << fm.getExecGrade()
 	   << " to execute";
 	return os;
 }

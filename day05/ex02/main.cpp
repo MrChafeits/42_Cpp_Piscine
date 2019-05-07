@@ -1,88 +1,43 @@
+#include <iostream>
+#include <stdexcept>
+#include "Form.hpp"
 #include "Bureaucrat.hpp"
-#include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 #include "PresidentialPardonForm.hpp"
 
-int main()
+static void test(Bureaucrat b,
+				 ShrubberyCreationForm f1,
+				 RobotomyRequestForm f2,
+				 PresidentialPardonForm f3) {
+	try {
+		b.signForm(f1);
+        b.signForm(f2);
+        b.signForm(f3);
+
+        b.executeForm(f1);
+        b.executeForm(f2);
+        b.executeForm(f3);
+    } catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
+}
+
+int main(void)
 {
-	Bureaucrat jim = Bureaucrat("Jim", 20);
+    Bureaucrat b1("B1", 71);
+    Bureaucrat b2("B2", 42);
+    Bureaucrat b3("B3", 1);
+    ShrubberyCreationForm f1("SCF_A3");
+    RobotomyRequestForm f2("RRF_B6");
+    PresidentialPardonForm f3("PPF_C9");
 
-	Bureaucrat tim;
+    test(b1, f1, f2, f3);
+    std::cout << std::endl;
 
-	tim = jim;
+    test(b2, f1, f2, f3);
+    std::cout << std::endl;
 
-	std::cout << jim << std::endl;
-	std::cout << tim << std::endl;
-	try {
-		tim = Bureaucrat("Thomas", 0);
-	}
-	catch (Bureaucrat::GradeTooHighException &e) {
-		std::cout << "Grade too high" << std::endl;
-	}
-	catch (Bureaucrat::GradeTooLowException &e) {
-		std::cout << "Grade too low" << std::endl;
-	}
-	try {
-		tim = Bureaucrat("Thomas", 149);
-		std::cout << tim << " created" << std::endl;
-		tim.decGrade();
-		std::cout << tim << " grade incremented" << std::endl;
-		tim.decGrade();
-		std::cout << tim << " grade decremented" << std::endl;
-		tim.decGrade();
-		std::cout << tim << " grade decremented" << std::endl;
-	}
-	catch (Bureaucrat::GradeTooHighException &e) {
-		std::cout << "Grade too high" << std::endl;
-	}
-	catch (Bureaucrat::GradeTooLowException &e) {
-		std::cout << "Grade too low" << std::endl;
-	}
-	try {
-		while (1)
-			tim.incGrade();
-	}
-	catch (Bureaucrat::GradeTooHighException &e) {
-		std::cout << tim << " grade too high.  Cannot raise it further" << std::endl;
-	}
-	catch (Bureaucrat::GradeTooLowException &e) {
-		std::cout << "Grade too low" << std::endl;
-	}
-
-	try {
-		Form f = Form("BILL", 17, 330);
-	}
-	catch (Form::GradeTooHighException) {
-		std::cout << "Grade too high" << std::endl;
-	}
-	catch (Form::GradeTooLowException) {
-		std::cout << "Grade too low" << std::endl;
-	}
-	Form f = Form("bill", 17, 30);
-
-	std::cout << f << std::endl;
-	jim.signForm(f);
-	std::cout << f << std::endl;
-
-	Bureaucrat tom = Bureaucrat("tom", 1);
-	tom.signForm(f);
-	std::cout << f << std::endl;
-
-	std::cout << "Shrub" << std::endl;
-	ShrubberyCreationForm scf = std::string("output");
-
-	tom.signForm(scf);
-	tom.executeForm(scf);
-	std::cout << tom << std::endl << f << std::endl;
-
-	RobotomyRequestForm rrf = RobotomyRequestForm("Vimothy");
-	tom.signForm(rrf);
-	std::cout << rrf << std::endl;
-	tom.executeForm(rrf);
-	std::cout << rrf << std::endl;
-
-	PresidentialPardonForm ppf = PresidentialPardonForm("Zaphod Beeblebrox");
-//	tom.signForm(ppf);
-	tom.executeForm(ppf);
-	std::cout << ppf << std::endl;
+    test(b3, f1, f2, f3);
+    std::cout << std::endl;
 }

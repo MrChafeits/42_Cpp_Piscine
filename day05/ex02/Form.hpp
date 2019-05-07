@@ -25,25 +25,29 @@ public:
 		virtual const char*	what() const throw();
 	};
 
-	Form( void );
-	Form( std::string, int, int )throw(Form::GradeTooHighException, Form::GradeTooLowException);
+	Form( std::string, std::string, int, int )
+		throw(Form::GradeTooHighException, Form::GradeTooLowException);
 	Form( Form const & );
 
 	~Form( void );
 
 	Form& operator=( Form const& );
 
-	std::string const& getName( void ) const;
-	int getGradeReqSign( void ) const;
-	int getGradeReqExec( void ) const;
-	bool getFormState( void ) const;
+	std::string getName( void ) const;
+	std::string getTarget( void ) const;
+	int getSignGrade( void ) const;
+	int getExecGrade( void ) const;
+
+	bool getSigned( void ) const;
 	bool beSigned( Bureaucrat const& ) throw(Form::GradeTooLowException);
-	void action( Bureaucrat const& ) const throw(Form::GradeTooLowException);
+
+	virtual void execute( Bureaucrat const& ) const = 0;
 
 private:
 	std::string const _name;
-	int const _gradeReqSign;
-	int const _gradeReqExec;
+	std::string _target;
+	int const _gradeSign;
+	int const _gradeExec;
 	bool _signed;
 
 };

@@ -1,20 +1,24 @@
 #ifndef PRESIDENTIALPARDONFORM_HPP
 #define PRESIDENTIALPARDONFORM_HPP
 
+#include <iostream>
+#include <string>
 #include "Form.hpp"
 
 class PresidentialPardonForm: public Form {
 
 public:
+	PresidentialPardonForm( void );
 	PresidentialPardonForm( std::string );
 	PresidentialPardonForm( PresidentialPardonForm const & );
+
 	~PresidentialPardonForm( void );
+
 	PresidentialPardonForm& operator=( PresidentialPardonForm const& );
 
-	void action( Bureaucrat& ) throw(Form::GradeTooLowException);
+	virtual void execute( Bureaucrat const& ) const;
 
 private:
-	std::string _target;
 
 };
 

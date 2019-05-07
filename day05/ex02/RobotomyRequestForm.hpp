@@ -1,20 +1,24 @@
 #ifndef ROBOTOMYREQUESTFORM_HPP
 #define ROBOTOMYREQUESTFORM_HPP
 
+#include <iostream>
+#include <string>
 #include "Form.hpp"
 
 class RobotomyRequestForm: public Form {
 
 public:
+	RobotomyRequestForm( void );
 	RobotomyRequestForm( std::string );
 	RobotomyRequestForm( RobotomyRequestForm const & );
+
 	~RobotomyRequestForm( void );
+
 	RobotomyRequestForm& operator=( RobotomyRequestForm const& );
 
-	void action( Bureaucrat& ) throw(Form::GradeTooLowException);
+	virtual void execute( Bureaucrat const& ) const;
 
 private:
-	std::string _target;
 
 };
 

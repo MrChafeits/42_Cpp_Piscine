@@ -1,14 +1,21 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat( void ): _grade(150), _name("John-Paper Space-Bureaucrat") { }
+Bureaucrat::Bureaucrat( void ):
+	_grade(150),
+	_name("John-Paper Space-Bureaucrat") { }
 
-Bureaucrat::Bureaucrat( std::string n, int g ) throw(Bureaucrat::GradeTooHighException, Bureaucrat::GradeTooLowException): _name(n) {
-	_grade = g;
-	if (_grade < 1) throw Bureaucrat::GradeTooHighException();
-	else if (_grade > 150) throw Bureaucrat::GradeTooLowException();
+Bureaucrat::Bureaucrat( std::string n, int g )
+	throw(Bureaucrat::GradeTooHighException,
+		  Bureaucrat::GradeTooLowException): _grade(g), _name(n) {
+	if (_grade < 1)
+		throw Bureaucrat::GradeTooHighException();
+	else if (_grade > 150)
+		throw Bureaucrat::GradeTooLowException();
 }
 
-Bureaucrat::Bureaucrat( Bureaucrat const &cp ): _grade(cp._grade), _name(cp._name) { }
+Bureaucrat::Bureaucrat( Bureaucrat const &cp ):
+	_grade(cp._grade),
+	_name(cp._name) { }
 
 Bureaucrat::~Bureaucrat( void ) { }
 
@@ -16,14 +23,16 @@ int Bureaucrat::getGrade( void ) const { return _grade; }
 
 std::string const& Bureaucrat::getName( void ) const { return _name; }
 
-void Bureaucrat::incGrade( void )throw(Bureaucrat::GradeTooHighException, Bureaucrat::GradeTooLowException) {
+void Bureaucrat::incGrade( void )
+	throw(Bureaucrat::GradeTooHighException, Bureaucrat::GradeTooLowException) {
 	if (_grade <= 1)
 		throw Bureaucrat::GradeTooHighException();
 	else
 		_grade--;
 }
 
-void Bureaucrat::decGrade( void )throw(Bureaucrat::GradeTooHighException, Bureaucrat::GradeTooLowException) {
+void Bureaucrat::decGrade( void )
+	throw(Bureaucrat::GradeTooHighException, Bureaucrat::GradeTooLowException) {
 	if (_grade >= 150)
 		throw Bureaucrat::GradeTooLowException();
 	else
@@ -43,22 +52,29 @@ std::ostream& operator<<( std::ostream& os, Bureaucrat const& br ) {
 }
 
 void Bureaucrat::signForm( Form &f ) throw(Bureaucrat::GradeTooLowException) {
-	try { f.beSigned(*this); }
-	catch (Form::GradeTooLowException) {
-		std::cout << this->getName() << " grade is too low. Cannot sign " << f.getName() << std::endl;
-		return;
+	try {
+		f.beSigned(*this);
+		std::cout << this->getName() << " signs " << f.getName() << std::endl;
+	} catch (Form::GradeTooLowException) {
+		std::cout << getName()
+				  << " grade is too low. Cannot sign "
+				  << f.getName()
+				  << std::endl;
 	}
-	std::cout << this->getName() << " signs " << f.getName() << std::endl;
 }
 
-void Bureaucrat::executeForm( Form const& f ) const throw(Bureaucrat::GradeTooLowException) {
-	if (f.getFormState()) {
-		try { f.action(*this); }
-		catch (Form::GradeTooLowException) {
-			std::cout << getName() << " grade too low to execute " << f.getName() << std::endl;
-			return;
+void Bureaucrat::executeForm( Form const& f ) const
+	throw(Bureaucrat::GradeTooLowException) {
+	if (f.getSigned()) {
+		try {
+			f.execute(*this);
+			std::cout << getName() << " executes " << f.getName() << std::endl;
+		} catch (Form::GradeTooLowException) {
+			std::cout << getName()
+					  << " grade too low to execute "
+					  << f.getName()
+					  << std::endl;
 		}
-		std::cout << getName() << " executes " << f.getName() << std::endl;
 	} else {
 		std::cout << f.getName() << " requires a signature" << std::endl;
 	}

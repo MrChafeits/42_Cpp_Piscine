@@ -1,10 +1,16 @@
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm( std::string t ):
-	Form("Shrubbery Creation Form", 145, 137),
-	_target(t) { }
+ShrubberyCreationForm::ShrubberyCreationForm( void ):
+	Form("Shrubbery Creation Form", "shrub", 145, 137) { }
 
-ShrubberyCreationForm::ShrubberyCreationForm( ShrubberyCreationForm const &cp ) {
+ShrubberyCreationForm::ShrubberyCreationForm( std::string t ):
+	Form("Shrubbery Creation Form", t, 145, 137) { }
+
+ShrubberyCreationForm::ShrubberyCreationForm( ShrubberyCreationForm const &cp ):
+	Form("Shrubbery Creation Form", "shrub", 145, 137) {
+	if (this != &cp) {
+		//TODO
+	}
 	*this = cp;
 }
 
@@ -14,42 +20,39 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=( ShrubberyCreationForm c
 	return *this;
 } // TODO: implement
 
-void ShrubberyCreationForm::action( Bureaucrat& b ) throw(Form::GradeTooLowException) {
-	if (!(b.getGrade() > getGradeReqExec()) && beSigned(b)) {
-		std::string f = _target + "_shrubbery";
-		std::ofstream ofs;
+void ShrubberyCreationForm::execute( Bureaucrat const& b ) const {
+	Form::execute(b);
+	std::ofstream ofs;
 
-		ofs.open(f.c_str(), std::ios::out);
-		if (!ofs.is_open()) {
-			std::cout << "File open error" << std::endl;
-			return;
-		}
-		ofs << "            .        +          .      .          ." << std::endl;
-		ofs << "     .            _        .                    ." << std::endl;
-		ofs << "  ,              /;-._,-.____        ,-----.__" << std::endl;
-		ofs << " ((        .    (_:#::_.:::. `-._   /:, /-._, `._," << std::endl;
-		ofs << "  `                 \\   _|`\"=:_::.`.);  \\ __/ /" << std::endl;
-		ofs << "                      ,    `./  \\:. `.   )==-\'  ." << std::endl;
-		ofs << "    .      ., ,-=-.  ,\\, +#./`   \\:.  / /           ." << std::endl;
-		ofs << ".           \\/:/`-\' , ,\\ \'` ` `   ): , /_  -o" << std::endl;
-		ofs << "       .    /:+- - + +- : :- + + -:\'  /(o-) \\)     ." << std::endl;
-		ofs << "  .      ,=\':  \\    ` `/` \' , , ,:\' `\'--\".--\"---._/`7" << std::endl;
-		ofs << "   `.   (    \\: \\,-._` ` + \'\\, ,\"   _,--._,---\":.__/" << std::endl;
-		ofs << "              \\:  `  X` _| _,\\/\'   .-\'" << std::endl;
-		ofs << ".               \":._:`\\____  /:\'  /      .           ." << std::endl;
-		ofs << "                    \\::.  :\\/:'  /              +" << std::endl;
-		ofs << "   .                 `.:.  /:'  }      ." << std::endl;
-		ofs << "           .           ):_(:;   \\           ." << std::endl;
-		ofs << "                      /:. _/ ,  |" << std::endl;
-		ofs << "                   . (|::.     ,`                  ." << std::endl;
-		ofs << "     .                |::.    {\\" << std::endl;
-		ofs << "                      |::.\\  \\ `." << std::endl;
-		ofs << "                      |:::(\\    |" << std::endl;
-		ofs << "              O       |:::/{ }  |                  (o" << std::endl;
-		ofs << "               )  ___/#\\::`/ (O \"==._____   O, (O  /`" << std::endl;
-		ofs << "          ~~~w/w~\"~~,\\` `:/,-(~`\"~~~~~~~~\"~o~\\~/~w|/~" << std::endl;
-		ofs << "      ~~~~~~~~~~~~~~~~~~~~~~~\\\\W~~~~~~~~~~~~\\|/~~" << std::endl;
-	} else if (this->getFormState()) {
-		throw Form::GradeTooLowException();
+	ofs.open(getTarget()+"_shrubbery", std::ofstream::out|std::ofstream::trunc);
+	if (ofs.fail()) {
+		std::cout << "File open error" << std::endl;
+		return;
 	}
+	ofs << "            .        +          .      .          ." << std::endl;
+	ofs << "     .            _        .                    ." << std::endl;
+	ofs << "  ,              /;-._,-.____        ,-----.__" << std::endl;
+	ofs << " ((        .    (_:#::_.:::. `-._   /:, /-._, `._," << std::endl;
+	ofs << "  `                 \\   _|`\"=:_::.`.);  \\ __/ /" << std::endl;
+	ofs << "                      ,    `./  \\:. `.   )==-\'  ." << std::endl;
+	ofs << "    .      ., ,-=-.  ,\\, +#./`   \\:.  / /           ." << std::endl;
+	ofs << ".           \\/:/`-\' , ,\\ \'` ` `   ): , /_  -o" << std::endl;
+	ofs << "       .    /:+- - + +- : :- + + -:\'  /(o-) \\)     ." << std::endl;
+	ofs << "  .      ,=\':  \\    ` `/` \' , , ,:\' `\'--\".--\"---._/`7" << std::endl;
+	ofs << "   `.   (    \\: \\,-._` ` + \'\\, ,\"   _,--._,---\":.__/" << std::endl;
+	ofs << "              \\:  `  X` _| _,\\/\'   .-\'" << std::endl;
+	ofs << ".               \":._:`\\____  /:\'  /      .           ." << std::endl;
+	ofs << "                    \\::.  :\\/:'  /              +" << std::endl;
+	ofs << "   .                 `.:.  /:'  }      ." << std::endl;
+	ofs << "           .           ):_(:;   \\           ." << std::endl;
+	ofs << "                      /:. _/ ,  |" << std::endl;
+	ofs << "                   . (|::.     ,`                  ." << std::endl;
+	ofs << "     .                |::.    {\\" << std::endl;
+	ofs << "                      |::.\\  \\ `." << std::endl;
+	ofs << "                      |:::(\\    |" << std::endl;
+	ofs << "              O       |:::/{ }  |                  (o" << std::endl;
+	ofs << "               )  ___/#\\::`/ (O \"==._____   O, (O  /`" << std::endl;
+	ofs << "          ~~~w/w~\"~~,\\` `:/,-(~`\"~~~~~~~~\"~o~\\~/~w|/~" << std::endl;
+	ofs << "      ~~~~~~~~~~~~~~~~~~~~~~~\\\\W~~~~~~~~~~~~\\|/~~" << std::endl;
+	ofs.close();
 }
