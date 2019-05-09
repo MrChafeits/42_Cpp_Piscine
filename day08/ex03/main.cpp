@@ -1,14 +1,5 @@
 #include "Instruction.hpp"
 
-// Instruction* addRightAngleBracket(){return new RightAngleBracket();}
-// Instruction* addLeftAngleBracket(){return new LeftAngleBracket();}
-// Instruction* addAdditionSymbol(){return new AdditionSymbol();}
-// Instruction* addFullWidthHyphen(){return new FullWidthHyphen();}
-// Instruction* addFullStop(){return new FullStop();}
-// Instruction* addAntiApostrophe(){return new AntiApostrophe();}
-// Instruction* addOpenSquareBracket(){return new OpenSquareBracket();}
-// Instruction* addCloseSquareBracket(){return new CloseSquareBracket();}
-
 void mindOpen(std::string f) {
 	static unsigned char t[TAPE_SIZE] = {0};
 	std::vector<Instruction*> i;

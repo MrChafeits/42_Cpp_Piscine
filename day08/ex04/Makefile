@@ -6,11 +6,11 @@
 #    By: callen <callen@student.42.us.org>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/26 12:34:05 by callen            #+#    #+#              #
-#    Updated: 2019/05/07 19:22:09 by callen           ###   ########.fr        #
+#    Updated: 2019/05/09 12:39:44 by callen           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME := temporarySecretary.out
+NAME := digitSmoosher.out
 DNAME := d_$(NAME)
 ANAME := a_$(NAME)
 
@@ -24,7 +24,7 @@ DBGFLAGS := -std=c++98 -Wall -Wextra -g -pipe
 ASNFLAGS := $(DBGFLAGS) -fsanitize=address
 INCFLAGS := -I.
 
-.PHONY: all clean fclean re debug dclean asan aclean j k
+.PHONY: all clean fclean re debug dclean j k asan aclean
 
 all: $(NAME)
 
@@ -35,22 +35,22 @@ debug:
 	$(CXX) $(DBGFLAGS) $(INCFLAGS) -o $(DNAME) $(SRCS)
 
 dclean:
-	rm -rf $(DNAME) $(DNAME).dSYM
+	$(RM) -r $(DNAME) $(DNAME).dSYM
 
 asan:
 	$(CXX) $(ASNFLAGS) $(INCFLAGS) -o $(ANAME) $(SRCS)
 
 aclean:
-	rm -rf $(ANAME) $(ANAME).dSYM
+	$(RM) -r $(ANAME) $(ANAME).dSYM
 
 j: debug
 
 k: dclean
 
 clean:
-	rm -f $(OBJS)
+	$(RM) $(OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	$(RM) $(NAME)
 
 re: fclean all
