@@ -1,23 +1,21 @@
 #ifndef INSTRUCTION_HPP
 #define INSTRUCTION_HPP
 
+#include <fstream>
 #include <iostream>
-#include <string>
+#include <stdexcept>
 #include <vector>
+
+#define TAPE_SIZE (32768)
 
 class Instruction {
 
 public:
 	virtual ~Instruction(void){};
-	virtual void execute(std::string*, unsigned long*, int*, std::vector<Instruction*>&)=0;
+	virtual void execute(unsigned char(&)[TAPE_SIZE], unsigned long*, int*, std::vector<Instruction*>&)=0;
 	virtual int getId(void) const=0;
+
 };
-
-#endif /* INSTRUCTION_HPP */
-#ifndef RIGHTANGLEBRACKET_HPP
-#define RIGHTANGLEBRACKET_HPP
-
-#include "Instruction.hpp"
 
 class RightAngleBracket: public Instruction {
 
@@ -27,17 +25,13 @@ public:
 	~RightAngleBracket( void );
 	RightAngleBracket& operator=( RightAngleBracket const& );
 
-	void execute(std::string* s, int* p, std::vector<Instruction*>::iterator* i);
+	void execute(unsigned char(&)[TAPE_SIZE], unsigned long*, int*, std::vector<Instruction*>&);
+	int getId(void)const;
 
 private:
+	int _id;
 
 };
-
-#endif /* RIGHTANGLEBRACKET_HPP */
-#ifndef LEFTANGLEBRACKET_HPP
-#define LEFTANGLEBRACKET_HPP
-
-#include "Instruction.hpp"
 
 class LeftAngleBracket: public Instruction {
 
@@ -47,15 +41,13 @@ public:
 	~LeftAngleBracket( void );
 	LeftAngleBracket& operator=( LeftAngleBracket const& );
 
-	void execute(std::string* s, int* p, std::vector<Instruction*>::iterator* i);
+	void execute(unsigned char(&)[TAPE_SIZE], unsigned long*, int*, std::vector<Instruction*>&);
+	int getId(void)const;
+
+private:
+	int _id;
 
 };
-
-#endif /* LEFTANGLEBRACKET_HPP */
-#ifndef ADDITIONSYMBOL_HPP
-#define ADDITIONSYMBOL_HPP
-
-#include "Instruction.hpp"
 
 class AdditionSymbol: public Instruction {
 
@@ -65,15 +57,13 @@ public:
 	~AdditionSymbol( void );
 	AdditionSymbol& operator=( AdditionSymbol const& );
 
-	void execute(std::string* s, int* p, std::vector<Instruction*>::iterator* i);
+	void execute(unsigned char(&)[TAPE_SIZE], unsigned long*, int*, std::vector<Instruction*>&);
+	int getId(void)const;
+
+private:
+	int _id;
 
 };
-
-#endif /* ADDITIONSYMBOL_HPP */
-#ifndef FULLWIDTHHYPHEN_HPP
-#define FULLWIDTHHYPHEN_HPP
-
-#include "Instruction.hpp"
 
 class FullWidthHyphen: public Instruction {
 
@@ -83,15 +73,13 @@ public:
 	~FullWidthHyphen( void );
 	FullWidthHyphen& operator=( FullWidthHyphen const& );
 
-	void execute(std::string* s, int* p, std::vector<Instruction*>::iterator* i);
+	void execute(unsigned char(&)[TAPE_SIZE], unsigned long*, int*, std::vector<Instruction*>&);
+	int getId(void)const;
+
+private:
+	int _id;
 
 };
-
-#endif /* FULLWIDTHHYPHEN_HPP */
-#ifndef FULLSTOP_HPP
-#define FULLSTOP_HPP
-
-#include "Instruction.hpp"
 
 class FullStop: public Instruction {
 
@@ -101,14 +89,13 @@ public:
 	~FullStop( void );
 	FullStop& operator=( FullStop const& );
 
-	void execute(std::string* s, int* p, std::vector<Instruction*>::iterator* i);
+	void execute(unsigned char(&)[TAPE_SIZE], unsigned long*, int*, std::vector<Instruction*>&);
+	int getId(void)const;
+
+private:
+	int _id;
+
 };
-
-#endif /* FULLSTOP_HPP */
-#ifndef ANTIAPOSTROPHE_HPP
-#define ANTIAPOSTROPHE_HPP
-
-#include "Instruction.hpp"
 
 class AntiApostrophe: public Instruction {
 
@@ -118,15 +105,13 @@ public:
 	~AntiApostrophe( void );
 	AntiApostrophe& operator=( AntiApostrophe const& );
 
-	void execute(std::string* s, int* p, std::vector<Instruction*>::iterator* i);
+	void execute(unsigned char(&)[TAPE_SIZE], unsigned long*, int*, std::vector<Instruction*>&);
+	int getId(void)const;
+
+private:
+	int _id;
 
 };
-
-#endif /* ANTIAPOSTROPHE_HPP */
-#ifndef OPENSQUAREBRACKET_HPP
-#define OPENSQUAREBRACKET_HPP
-
-#include "Instruction.hpp"
 
 class OpenSquareBracket: public Instruction {
 
@@ -136,18 +121,13 @@ public:
 	~OpenSquareBracket( void );
 	OpenSquareBracket& operator=( OpenSquareBracket const& );
 
-	void execute(std::string*, unsigned long*, int*, std::vector<Instruction*>&);
+	void execute(unsigned char(&)[TAPE_SIZE], unsigned long*, int*, std::vector<Instruction*>&);
 	int getId(void)const;
 
 private:
 	int _id;
+
 };
-
-#endif /* OPENSQUAREBRACKET_HPP */
-#ifndef CLOSESQUAREBRACKET_HPP
-#define CLOSESQUAREBRACKET_HPP
-
-#include "Instruction.hpp"
 
 class CloseSquareBracket: public Instruction {
 
@@ -157,11 +137,12 @@ public:
 	~CloseSquareBracket( void );
 	CloseSquareBracket& operator=( CloseSquareBracket const& );
 
-	void execute(std::string*, unsigned long*, int*, std::vector<Instruction*>&);
+	void execute(unsigned char(&)[TAPE_SIZE], unsigned long*, int*, std::vector<Instruction*>&);
 	int getId(void)const;
 
 private:
 	int _id;
+
 };
 
-#endif /* CLOSESQUAREBRACKET_HPP */
+#endif /* INSTRUCTION_HPP */

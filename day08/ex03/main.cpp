@@ -1,50 +1,49 @@
-#include "AInstruction.hpp"
+#include "Instruction.hpp"
 
-void	addInstruction(std::vector<AInstruction *>& v, char c)
-{
-	static_cast<void>(v);
-	if (c == '[')
-		v.push_back(new OpeningBracket());
-	else if (c == ']')
-		v.push_back(new ClosingBracket());
-	else if (c == '.')
-		v.push_back(new Out());
-	else if (c == '<')
-		v.push_back(new PtrDec());
-	else if (c == '>')
-		v.push_back(new PtrInc());
-	else if (c == '-')
-		v.push_back(new ValDec());
-	else if (c == '+')
-		v.push_back(new ValInc());
-	else if (c == ',')
-		v.push_back(new TakeInput());
+// Instruction* addRightAngleBracket(){return new RightAngleBracket();}
+// Instruction* addLeftAngleBracket(){return new LeftAngleBracket();}
+// Instruction* addAdditionSymbol(){return new AdditionSymbol();}
+// Instruction* addFullWidthHyphen(){return new FullWidthHyphen();}
+// Instruction* addFullStop(){return new FullStop();}
+// Instruction* addAntiApostrophe(){return new AntiApostrophe();}
+// Instruction* addOpenSquareBracket(){return new OpenSquareBracket();}
+// Instruction* addCloseSquareBracket(){return new CloseSquareBracket();}
+
+void mindOpen(std::string f) {
+	static unsigned char t[TAPE_SIZE] = {0};
+	std::vector<Instruction*> i;
+	std::fstream ifs(f);
+	unsigned long n;
+	char c=0;
+	int p=0;
+
+	while (ifs.get(c)) {
+		switch (c) {
+		case '+': i.push_back(new AdditionSymbol()); break;
+		case ',': i.push_back(new AntiApostrophe()); break;
+		case '-': i.push_back(new FullWidthHyphen()); break;
+		case '.': i.push_back(new FullStop()); break;
+		case '<': i.push_back(new LeftAngleBracket()); break;
+		case '>': i.push_back(new RightAngleBracket()); break;
+		case '[': i.push_back(new OpenSquareBracket()); break;
+		case ']': i.push_back(new CloseSquareBracket()); break;
+		default: break;
+		}
+	}
+	ifs.close();
+	for (n=0; n < i.size(); n++)
+		i[n]->execute(t, &n, &p, i);
 }
 
-int		main(int argc, char **argv)
-{
-	if (argc != 2)
-	{
-		std::cout << "usage: " << argv[0] << " filename" << std::endl;
-		return (1);
+int main(int argc, char* argv[]) {
+	int ret;
+	if(argc == 2) {
+		mindOpen(argv[1]);
+		std::cout<<std::endl;
+		ret = 0;
+	} else {
+		std::cout << "Usage: ./" << argv[0] << " [file]" << std::endl;
+		ret = 1;
 	}
-	static unsigned char		tape[TAPE_SIZE] = { 0 };
-	static_cast<void>(tape);
-	std::vector<AInstruction *>	instructions;
-	unsigned long				i = 0;
-	std::fstream				fin(argv[1]);
-	char						c;
-	std::string					valid = ".,[]+-<>";
-	int							j;
-
-	while (fin.get(c))
-		if (valid.find_first_of(c) != std::string::npos)
-			addInstruction(instructions, c);
-	fin.close();
-	while (i < instructions.size())
-	{
-		instructions[i]->execute(tape, instructions, &i, &j);
-		++i;
-	}
-	return (0);
+	return ret;
 }
