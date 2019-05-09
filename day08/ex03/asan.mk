@@ -1,32 +1,44 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
+#    asan.mk                                            :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: callen <callen@student.42.us.org>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/26 12:34:05 by callen            #+#    #+#              #
-#    Updated: 2019/05/08 21:20:28 by callen           ###   ########.fr        #
+#    Updated: 2019/05/08 21:18:11 by callen           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-all:
-	@make -f regular.mk all
+NAME := a_discordantSynth.out
 
-debug:
-	@make -f debug.mk all
+SRCS := main.cpp \
+		RightAngleBracket.cpp \
+		LeftAngleBracket.cpp \
+		AdditionSymbol.cpp \
+		FullWidthHyphen.cpp \
+		FullStop.cpp \
+		AntiApostrophe.cpp \
+		OpenSquareBracket.cpp \
+		CloseSquareBracket.cpp
 
-dclean:
-	@make -f debug.mk fclean
+OBJS := $(SRCS:.cpp=.o)
 
-j: debug
+CXX	:= clang++
+CXXFLAGS := -Wall -Wextra -g -pipe -fno-omit-frame-pointer -fsanitze=address
+INCFLAGS := -I.
 
-k: dclean
+.PHONY: all clean fclean re
+
+all: $(NAME)
+
+$(NAME): $(OBJS)
+	$(CXX) $(OBJS) -o $@
 
 clean:
-	@make -f regular.mk clean
+	rm -f $(OBJS)
 
-fclean:
-	@make -f regular.mk fclean
+fclean: clean
+	rm -rf $(NAME) $(NAME).dSYM
 
 re: fclean all
