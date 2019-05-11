@@ -1,10 +1,22 @@
+#******************************************************************************#
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: callen <marvin@42.fr>                      +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2019/05/10 10:45:15 by callen            #+#    #+#              #
+#    Updated: 2019/05/10 10:45:19 by callen           ###   ########.fr        #
+#                                                                              #
+#******************************************************************************#
+
 NAME := ft_gkrellm
 DNAME := d_$(NAME)
 ANAME := a_$(NAME)
 
 CXX	:= clang++
 CXXFLAGS := -std=c++98 -Wall -Wextra -Werror -pipe
-DBGFLAGS := -std=c++98 -Wall -Wextra -g -pipe
+DBGFLAGS := -std=c++98 -Wall -Wextra -g -pipe -fno-omit-frame-pointer
 ASNFLAGS := $(DBGFLAGS) -fsanitize=address
 
 OBJDIR := .obj
@@ -48,6 +60,10 @@ $(addprefix $(DBGDIR)/, %.o): $(addprefix $(SRCDIR)/, %.cpp)
 dclean:
 	rm -rf $(DNAME) $(DNAME).dSYM $(DBGDIR)
 
+j: debug
+
+k: dclean
+
 asan: $(ASNDIR) $(ASNS)
 	$(CXX) $(LDFLAGS) -o $(ANAME) $(ASNS)
 
@@ -59,10 +75,6 @@ $(addprefix $(ASNDIR)/, %.o): $(addprefix $(SRCDIR)/, %.cpp)
 
 aclean:
 	rm -rf $(ANAME) $(ANAME).dSYM $(ASNDIR)
-
-j: debug
-
-k: dclean
 
 f: asan
 

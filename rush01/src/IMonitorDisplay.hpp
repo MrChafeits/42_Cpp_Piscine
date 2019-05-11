@@ -1,6 +1,7 @@
 #ifndef IMONITORDISPLAY_HPP
 #define IMONITORDISPLAY_HPP
 
+#include "IMonitorModule.hpp"
 //TODO: figure out commonalities between cli and gui display modes, if any
 
 class IMonitorDisplay {
@@ -10,13 +11,7 @@ public:
 	IMonitorDisplay(IMonitorDisplay const&);
 	~IMonitorDisplay(void);
 	IMonitorDisplay& operator=(IMonitorDisplay const&);
-
-private:
-	bool _visible;
-	int _xPos;
-	int _yPos;
-	int _width;
-	int _height;
+	virtual std::vector<IMonitorModule*> getInfo(void) const=0;
 
 };
 
