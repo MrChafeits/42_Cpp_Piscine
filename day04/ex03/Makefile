@@ -17,7 +17,7 @@ ANAME := a_$(NAME)
 SRCS := AMateria.cpp Character.cpp Cure.cpp Ice.cpp MateriaSource.cpp main.cpp
 OBJS := $(SRCS:.cpp=.o)
 
-CXX	:= clang++
+CXX	:= g++-9
 CXXFLAGS := -std=c++98 -Wall -Wextra -Werror -pipe
 DBGFLAGS := -std=c++98 -Wall -Wextra -g -pipe
 ASNFLAGS := $(DBGFLAGS) -fsanitize=address

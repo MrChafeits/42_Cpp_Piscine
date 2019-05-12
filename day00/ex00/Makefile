@@ -15,7 +15,7 @@ NAME := megaphone
 SRCS := megaphone.cpp
 OBJS := $(SRCS:.cpp=.o)
 
-CXX	:= clang++
+CXX	:= g++-9
 CXXFLAGS := -std=c++98 -Wall -Wextra -Werror
 
 .PHONY: all clean fclean re

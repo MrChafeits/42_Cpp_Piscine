@@ -18,7 +18,7 @@ SRCS := AWeapon.cpp PlasmaRifle.cpp PowerFist.cpp Enemy.cpp SuperMutant.cpp \
 		RadScorpion.cpp Character.cpp main.cpp
 OBJS := $(SRCS:.cpp=.o)
 
-CXX	:= clang++
+CXX	:= g++-9
 CXXFLAGS := -std=c++98 -Wall -Wextra -Werror -pipe
 DBGFLAGS := -std=c++98 -Wall -Wextra -g -pipe
 ASNFLAGS := $(DBGFLAGS) -fsanitize=address

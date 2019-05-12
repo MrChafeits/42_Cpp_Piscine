@@ -1,5 +1,5 @@
 # ioccc2018:anderson
-CXX := clang++
+CXX := g++-9
 CXXFLAGS := -Wall -Wextra -Werror
 .PHONY: all clean fclean re
 all: main.o

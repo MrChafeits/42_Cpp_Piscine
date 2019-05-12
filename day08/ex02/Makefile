@@ -6,7 +6,7 @@
 #    By: callen <callen@student.42.us.org>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/26 12:34:05 by callen            #+#    #+#              #
-#    Updated: 2019/05/07 19:19:53 by callen           ###   ########.fr        #
+#    Updated: 2019/05/11 23:41:53 by callen           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SRCS := main.cpp mutantstack.cpp
 
 OBJS := $(SRCS:.cpp=.o)
 
-CXX	:= clang++
+CXX	:= g++-9
 CXXFLAGS := -std=c++98 -Wall -Wextra -Werror -pipe
 DBGFLAGS := -std=c++98 -Wall -Wextra -g -pipe
 ASNFLAGS := $(DBGFLAGS) -fsanitize=address

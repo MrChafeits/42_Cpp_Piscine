@@ -2,7 +2,7 @@ NAME := ft_retro
 DNAME := d_$(NAME)
 ANAME := a_$(NAME)
 
-CXX	:= clang++
+CXX	:= g++-9
 CXXFLAGS := -std=c++98 -Wall -Wextra -Werror -pipe
 DBGFLAGS := -std=c++98 -Wall -Wextra -g -pipe
 ASNFLAGS := $(DBGFLAGS) -fsanitize=address
